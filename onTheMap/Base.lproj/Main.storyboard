@@ -49,12 +49,18 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="authenticateCredentials:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R83-Vq-zLn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3P-xD-YOP">
                                         <rect key="frame" x="0.0" y="193.5" width="220" height="30"/>
                                         <state key="normal" title="Don't Have an Account? Sign up">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="openUdacitySignUpOnSafari:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bwf-ex-Pcu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -65,10 +71,43 @@
                             <constraint firstItem="wKB-D0-ftn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pAn-F0-gtX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="9Cy-e3-1F9" id="qf7-56-b5J"/>
+                        <outlet property="loginButton" destination="tXr-G5-UeP" id="t59-G3-oJm"/>
+                        <outlet property="passwordTextField" destination="nEq-cX-NFz" id="yI8-wu-hah"/>
+                        <segue destination="4d5-XV-FID" kind="showDetail" identifier="mapAndTable" id="nhd-bS-w2Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="158.77061469265368"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hx0-lM-prq">
+            <objects>
+                <viewController id="4d5-XV-FID" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FMi-qh-yYa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cj4-lF-kdj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C9V-iA-n17">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tabbed Map and Table Views Go Here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlP-gi-Mby">
+                                <rect key="frame" x="16" y="300" width="343" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eKD-0u-SW0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165.5999999999999" y="158.77061469265368"/>
         </scene>
     </scenes>
 </document>
