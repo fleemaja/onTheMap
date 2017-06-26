@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="158.77061469265368"/>
         </scene>
-        <!--View Controller-->
+        <!--Map And Table View Controller-->
         <scene sceneID="hx0-lM-prq">
             <objects>
-                <viewController id="4d5-XV-FID" sceneMemberID="viewController">
+                <viewController id="4d5-XV-FID" customClass="MapAndTableViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FMi-qh-yYa"/>
                         <viewControllerLayoutGuide type="bottom" id="Cj4-lF-kdj"/>
