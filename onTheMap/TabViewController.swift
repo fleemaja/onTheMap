@@ -1,5 +1,5 @@
 //
-//  MapAndTableViewController.swift
+//  TabViewController.swift
 //  onTheMap
 //
 //  Created by Drew Fleeman on 6/26/17.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class MapAndTableViewController: UIViewController {
+class TabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+
 
 }

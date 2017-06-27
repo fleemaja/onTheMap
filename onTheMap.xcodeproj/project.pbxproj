@@ -13,7 +13,10 @@
 		3A989B6A1F01720600E289DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A989B691F01720600E289DC /* Assets.xcassets */; };
 		3A989B6D1F01720600E289DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A989B6B1F01720600E289DC /* LaunchScreen.storyboard */; };
 		3AEA9FEE1F0191DD00388270 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FED1F0191DD00388270 /* UIViewControllerExtension.swift */; };
-		3AEA9FF01F01A2EA00388270 /* MapAndTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FEF1F01A2EA00388270 /* MapAndTableViewController.swift */; };
+		3AEA9FF21F01AEFD00388270 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FF11F01AEFD00388270 /* TabViewController.swift */; };
+		3AEA9FF41F01BB9E00388270 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FF31F01BB9E00388270 /* TableViewController.swift */; };
+		3AEA9FF61F01BBE400388270 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FF51F01BBE400388270 /* MapViewController.swift */; };
+		3AEA9FF81F01BD5D00388270 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FF71F01BD5D00388270 /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +28,10 @@
 		3A989B6C1F01720600E289DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A989B6E1F01720600E289DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AEA9FED1F0191DD00388270 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		3AEA9FEF1F01A2EA00388270 /* MapAndTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAndTableViewController.swift; sourceTree = "<group>"; };
+		3AEA9FF11F01AEFD00388270 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		3AEA9FF31F01BB9E00388270 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		3AEA9FF51F01BBE400388270 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3AEA9FF71F01BD5D00388270 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +64,14 @@
 		3A989B611F01720600E289DC /* onTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				3AEA9FF71F01BD5D00388270 /* Student.swift */,
+				3A989B621F01720600E289DC /* AppDelegate.swift */,
+				3AEA9FF11F01AEFD00388270 /* TabViewController.swift */,
 				3A989B741F01721D00E289DC /* Supporting Files */,
 				3A989B641F01720600E289DC /* LoginViewController.swift */,
 				3A989B661F01720600E289DC /* Main.storyboard */,
-				3AEA9FEF1F01A2EA00388270 /* MapAndTableViewController.swift */,
+				3AEA9FF31F01BB9E00388270 /* TableViewController.swift */,
+				3AEA9FF51F01BBE400388270 /* MapViewController.swift */,
 				3AEA9FED1F0191DD00388270 /* UIViewControllerExtension.swift */,
 			);
 			path = onTheMap;
@@ -71,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				3A989B6E1F01720600E289DC /* Info.plist */,
-				3A989B621F01720600E289DC /* AppDelegate.swift */,
 				3A989B691F01720600E289DC /* Assets.xcassets */,
 				3A989B6B1F01720600E289DC /* LaunchScreen.storyboard */,
 			);
@@ -150,9 +159,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AEA9FF21F01AEFD00388270 /* TabViewController.swift in Sources */,
+				3AEA9FF61F01BBE400388270 /* MapViewController.swift in Sources */,
 				3A989B651F01720600E289DC /* LoginViewController.swift in Sources */,
 				3A989B631F01720600E289DC /* AppDelegate.swift in Sources */,
-				3AEA9FF01F01A2EA00388270 /* MapAndTableViewController.swift in Sources */,
+				3AEA9FF41F01BB9E00388270 /* TableViewController.swift in Sources */,
+				3AEA9FF81F01BD5D00388270 /* Student.swift in Sources */,
 				3AEA9FEE1F0191DD00388270 /* UIViewControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
