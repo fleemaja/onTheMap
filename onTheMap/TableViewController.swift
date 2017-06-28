@@ -86,6 +86,11 @@ class TableViewController: UITableViewController {
 //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        openUrl(Storage.shared.students[indexPath.row].mediaUrl)
 //    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let student = students[indexPath.row]
+        let url =  URL(string: student.mediaUrl)!
+        UIApplication.shared.open(url, options: [:])
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -125,6 +125,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="rMQ-f1-LRr"/>
+                    <connections>
+                        <outlet property="mapView" destination="UbN-t0-1qd" id="4Rv-id-bx0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlY-GR-i5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
