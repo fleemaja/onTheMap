@@ -124,7 +124,23 @@
                             <constraint firstItem="UbN-t0-1qd" firstAttribute="top" secondItem="0MC-f3-OxT" secondAttribute="bottom" id="aud-0a-3kh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="On The Map" id="rMQ-f1-LRr"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="rMQ-f1-LRr">
+                        <barButtonItem key="leftBarButtonItem" id="Xsu-bq-HhJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y6f-mY-ZwP">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logOut:" destination="yaU-Fn-jAd" eventType="touchUpInside" id="87a-0C-Onk"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="1bP-nt-v5X">
+                            <connections>
+                                <action selector="refreshMap:" destination="yaU-Fn-jAd" id="9xU-uh-TBY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="UbN-t0-1qd" id="4Rv-id-bx0"/>
                     </connections>
@@ -172,7 +188,23 @@
                             <outlet property="delegate" destination="ykV-bi-oaN" id="nGJ-eS-ysv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="On The Map" id="irY-Uj-L78"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="irY-Uj-L78">
+                        <barButtonItem key="leftBarButtonItem" id="ff4-fn-aNQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gfL-x7-tIJ">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logOut:" destination="ykV-bi-oaN" eventType="touchUpInside" id="Y8d-8W-E4f"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="jB4-KF-gkL">
+                            <connections>
+                                <action selector="refreshTable:" destination="ykV-bi-oaN" id="Sy7-sf-bgA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jok-Nh-GeL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

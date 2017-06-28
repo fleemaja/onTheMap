@@ -13,6 +13,12 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    
+    @IBAction func refreshMap(_ sender: UIBarButtonItem) {
+        mapView.removeAnnotations(mapView.annotations)
+        fetchStudents()
+    }
+    
     var students: [Student]! {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.students
@@ -48,6 +54,9 @@ class MapViewController: UIViewController {
                 return
             }
             
+//             clear students array
+            (UIApplication.shared.delegate as! AppDelegate).students = [Student]()
+            
             for result in results {
                 let student = Student(dictionary: result)
                 (UIApplication.shared.delegate as! AppDelegate).students.append(student)
@@ -59,6 +68,33 @@ class MapViewController: UIViewController {
         }
         task.resume()
     }
+    
+    @IBAction func logOut(_ sender: UIButton) {
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error…
+                return
+            }
+            let range = Range(5..<data!.count)
+            let newData = data?.subdata(in: range) /* subset response data! */
+            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            DispatchQueue.main.async(execute: {
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
+        task.resume()
+    }
+    
     
     private func addAnnotations() {
         var annotations = [MKPointAnnotation]()
@@ -120,7 +156,9 @@ extension MapViewController: MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)! as URL)
+                if toOpen != "" {
+                    app.open(URL(string: toOpen)! as URL)
+                }
             }
         }
     }
