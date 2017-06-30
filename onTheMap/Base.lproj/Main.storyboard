@@ -144,7 +144,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="CcV-lG-354">
                                 <connections>
-                                    <segue destination="sRD-ja-5iM" kind="presentation" id="icv-Xg-anv"/>
+                                    <segue destination="Eyf-Yc-Bmb" kind="presentation" id="gPG-RP-94B"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -215,7 +215,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="8cJ-qU-UTb">
                                 <connections>
-                                    <segue destination="sRD-ja-5iM" kind="presentation" id="jh6-4J-2dt"/>
+                                    <segue destination="Eyf-Yc-Bmb" kind="presentation" id="4CJ-R3-XFh"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -225,10 +225,10 @@
             </objects>
             <point key="canvasLocation" x="2013.5999999999999" y="626.53673163418296"/>
         </scene>
-        <!--Find On Map View Controller-->
+        <!--Pin Post View Controller-->
         <scene sceneID="VMl-Or-JIi">
             <objects>
-                <viewController id="pJY-5O-lDb" customClass="FindOnMapViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pJY-5O-lDb" customClass="PinPostViewController" customModule="onTheMap" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2lr-17-nmK"/>
                         <viewControllerLayoutGuide type="bottom" id="xpQ-XN-zOQ"/>
@@ -237,29 +237,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="QZS-Tf-frq">
-                                <rect key="frame" x="69" y="233" width="237" height="200.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IGN-vq-uIi">
+                                <rect key="frame" x="0.0" y="84" width="375" height="563"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFI-Ii-Q3d">
-                                        <rect key="frame" x="0.0" y="0.0" width="237" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="48.5" y="0.0" width="278" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Location Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wyx-Pi-K7f">
-                                        <rect key="frame" x="28" y="80.5" width="181" height="30"/>
+                                        <rect key="frame" x="97" y="109.5" width="181" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" verticalHuggingPriority="300" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bUn-3P-8jL">
+                                        <rect key="frame" x="13.5" y="224.5" width="348" height="212"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="212" id="QVH-lO-4iF"/>
+                                            <constraint firstAttribute="height" constant="212" id="ULc-4Q-MX3"/>
+                                            <constraint firstAttribute="width" constant="348" id="xMp-Ju-xFj"/>
+                                        </constraints>
+                                    </mapView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4u-hh-g6U">
-                                        <rect key="frame" x="59.5" y="170.5" width="118" height="30"/>
+                                        <rect key="frame" x="150" y="522" width="75" height="41"/>
                                         <color key="backgroundColor" red="1" green="0.38250307430000002" blue="0.029188404330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Find On The Map">
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Search">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="forwardGeocode:" destination="pJY-5O-lDb" eventType="touchUpInside" id="AfS-YI-B4l"/>
+                                            <action selector="pinPostButtonPressed:" destination="pJY-5O-lDb" eventType="touchUpInside" id="M8d-55-aIb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -267,29 +276,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QZS-Tf-frq" firstAttribute="centerX" secondItem="gjr-xH-J48" secondAttribute="centerX" id="hrr-Sw-jMU"/>
-                            <constraint firstItem="QZS-Tf-frq" firstAttribute="centerY" secondItem="gjr-xH-J48" secondAttribute="centerY" id="oWx-cO-8Lw"/>
+                            <constraint firstItem="IGN-vq-uIi" firstAttribute="top" secondItem="2lr-17-nmK" secondAttribute="bottom" constant="20" id="MsE-1l-7P8"/>
+                            <constraint firstItem="xpQ-XN-zOQ" firstAttribute="top" secondItem="IGN-vq-uIi" secondAttribute="bottom" constant="20" id="SyV-nc-v98"/>
+                            <constraint firstItem="IGN-vq-uIi" firstAttribute="leading" secondItem="gjr-xH-J48" secondAttribute="leading" id="u1L-0d-WSp"/>
+                            <constraint firstAttribute="trailing" secondItem="IGN-vq-uIi" secondAttribute="trailing" id="u6e-wt-459"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1l5-vt-uFx">
-                        <barButtonItem key="rightBarButtonItem" id="nOh-km-g7Y">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cBq-1v-QD2">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="dismissModal:" destination="pJY-5O-lDb" eventType="touchUpInside" id="k5X-bX-Gqg"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="nOh-km-g7Y">
+                            <connections>
+                                <action selector="dismissModal:" destination="pJY-5O-lDb" id="Kk0-A4-ffM"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="locationTextField" destination="wyx-Pi-K7f" id="HUM-wU-fNA"/>
+                        <outlet property="answerField" destination="wyx-Pi-K7f" id="Vpt-eg-YxK"/>
+                        <outlet property="mapView" destination="bUn-3P-8jL" id="6bS-co-ysw"/>
+                        <outlet property="pinPostButton" destination="Z4u-hh-g6U" id="aXd-Ou-VgH"/>
+                        <outlet property="questionLabel" destination="aFI-Ii-Q3d" id="5uw-6w-anI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTh-Nm-vRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4015" y="934"/>
+            <point key="canvasLocation" x="4951.1999999999998" y="932.38380809595208"/>
         </scene>
         <!--Table-->
         <scene sceneID="Zxp-ag-ewN">
@@ -330,25 +339,25 @@
             <point key="canvasLocation" x="1102" y="1335"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="MpW-5a-prY">
+        <scene sceneID="t6U-OD-q1Y">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sRD-ja-5iM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eyf-Yc-Bmb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ue0-Pl-V44">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QmO-pD-dbd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="pJY-5O-lDb" kind="relationship" relationship="rootViewController" id="hcP-yL-RhZ"/>
+                        <segue destination="pJY-5O-lDb" kind="relationship" relationship="rootViewController" id="goi-Y1-WLi"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uoa-Lh-X0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="loy-Sq-iB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2957.5999999999999" y="934.18290854572717"/>
+            <point key="canvasLocation" x="4013.5999999999999" y="933.28335832083962"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="icv-Xg-anv"/>
+        <segue reference="4CJ-R3-XFh"/>
     </inferredMetricsTieBreakers>
 </document>
