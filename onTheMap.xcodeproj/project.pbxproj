@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A745C971F042A3900BA967B /* PinPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A745C961F042A3900BA967B /* PinPostViewController.swift */; };
+		3A9481E51F081B73001090D5 /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9481E41F081B73001090D5 /* UdacityUser.swift */; };
 		3A989B631F01720600E289DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A989B621F01720600E289DC /* AppDelegate.swift */; };
 		3A989B651F01720600E289DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A989B641F01720600E289DC /* LoginViewController.swift */; };
 		3A989B681F01720600E289DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A989B661F01720600E289DC /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		3A745C961F042A3900BA967B /* PinPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPostViewController.swift; sourceTree = "<group>"; };
+		3A9481E41F081B73001090D5 /* UdacityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		3A989B5F1F01720600E289DC /* onTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A989B621F01720600E289DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A989B641F01720600E289DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				3AEA9FF11F01AEFD00388270 /* TabViewController.swift */,
 				3A989B741F01721D00E289DC /* Supporting Files */,
 				3A989B641F01720600E289DC /* LoginViewController.swift */,
+				3A9481E41F081B73001090D5 /* UdacityUser.swift */,
 				3A989B661F01720600E289DC /* Main.storyboard */,
 				3A745C961F042A3900BA967B /* PinPostViewController.swift */,
 				3AEA9FF31F01BB9E00388270 /* TableViewController.swift */,
@@ -169,6 +172,7 @@
 				3A989B631F01720600E289DC /* AppDelegate.swift in Sources */,
 				3AEA9FF41F01BB9E00388270 /* TableViewController.swift in Sources */,
 				3AEA9FF81F01BD5D00388270 /* Student.swift in Sources */,
+				3A9481E51F081B73001090D5 /* UdacityUser.swift in Sources */,
 				3AEA9FEE1F0191DD00388270 /* UIViewControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

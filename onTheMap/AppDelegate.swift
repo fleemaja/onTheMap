@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var students = [Student]()
-
+    var user: UdacityUser?
 
 }
 

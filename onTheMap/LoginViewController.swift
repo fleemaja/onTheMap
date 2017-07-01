@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
-//            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
 //            DispatchQueue.main.async(execute: {
 //                self.showErrorAlert(message: NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)! as String)
 //            })
@@ -72,7 +72,9 @@ class LoginViewController: UIViewController {
                 })
                 return
             }
-            
+            // successful login
+            let session = (json as AnyObject)["account"]! as AnyObject
+            self.getUser(id: (session as AnyObject)["key"]! as! String)
             DispatchQueue.main.async(execute: {
                 self.performSegue(withIdentifier: "mapAndTable", sender: self)
             })
@@ -80,6 +82,49 @@ class LoginViewController: UIViewController {
         }
         task.resume()
         
+    }
+    
+    func getUser(id: String) {
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/users/\(id)")!)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error...
+                return
+            }
+            let range = Range(5..<data!.count)
+            let newData = data?.subdata(in: range) /* subset response data! */
+            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            
+            let json: Any!
+            do {
+                json = try JSONSerialization.jsonObject(with: newData!, options: .allowFragments)
+            } catch {
+                DispatchQueue.main.async(execute: {
+                    self.showErrorAlert(message: "JSON Parsing Error")
+                })
+                return
+            }
+            
+            guard let userData = (json as AnyObject)["user"]! as? [String : AnyObject] else {
+                print("Can't find [user] in response")
+                return
+            }
+            
+            guard let firstName = userData["first_name"] as? String, let lastName = userData["last_name"] as? String else {
+                print("Can't find [user]['first_name'] or [user]['last_name'] in response")
+                return
+            }
+            
+            let user = UdacityUser(dictionary: [
+                "id": id as AnyObject,
+                "firstName": firstName as AnyObject,
+                "lastName": lastName as AnyObject,
+                ])
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.user = user
+        }
+        task.resume()
     }
 
 }

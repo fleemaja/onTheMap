@@ -19,6 +19,11 @@ class PinPostViewController: UIViewController {
     var location: String = ""
     var coordinate: CLLocationCoordinate2D?
     
+    var user: UdacityUser? {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.user
+    }
+    
     @IBAction func dismissModal(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -28,7 +33,7 @@ class PinPostViewController: UIViewController {
         
         switch currentButtonTitle {
             case "Search": forwardGeocode()
-            case "Submit": break
+            case "Submit": postPin()
             default: break
         }
     }
@@ -50,7 +55,7 @@ class PinPostViewController: UIViewController {
             self.location = location
             self.coordinate = placemark!.first!.location!.coordinate
             
-            self.success()
+            self.foundLocationSuccess()
         }
         
     }
@@ -72,8 +77,7 @@ class PinPostViewController: UIViewController {
         })
     }
     
-    func success() {
-        showErrorAlert(message: "Success! Found coordinates for \(location)")
+    func foundLocationSuccess() {
         
         questionLabel.text = "What link do you want to post?"
         answerField.text = ""
@@ -81,6 +85,33 @@ class PinPostViewController: UIViewController {
         pinPostButton.setTitle("Submit", for: .normal)
         
         pin(coordinate: self.coordinate!)
+        
+    }
+    
+    func postPin() {
+        
+        guard let link = answerField.text, link != "" else {
+            showErrorAlert(message: "Please enter a link to submit")
+            return
+        }
+        
+        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        request.httpMethod = "POST"
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "{\"uniqueKey\": \"\(user!.id)\", \"firstName\": \"\(user!.firstName)\", \"lastName\": \"\(user!.lastName)\",\"mapString\": \"\(self.location)\", \"mediaURL\": \"\(link)\",\"latitude\": \(Double(self.coordinate!.latitude)), \"longitude\": \(Double(self.coordinate!.longitude))}".data(using: String.Encoding.utf8)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil { // Handle error…
+                return
+            }
+            
+            DispatchQueue.main.async(execute: {
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
+        task.resume()
     }
 
 }
