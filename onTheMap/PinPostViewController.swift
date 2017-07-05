@@ -11,17 +11,23 @@ import MapKit
 
 class PinPostViewController: UIViewController {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerField: UITextField!
     @IBOutlet weak var pinPostButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
+    let apiClient = ApiClient()
+    
     var location: String = ""
-    var coordinate: CLLocationCoordinate2D?
+    var coordinate: CLLocationCoordinate2D? {
+        didSet {
+            spinner?.stopAnimating()
+        }
+    }
     
     var user: UdacityUser? {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.user
+        return Model.shared.user
     }
     
     @IBAction func dismissModal(_ sender: UIBarButtonItem) {
@@ -40,6 +46,7 @@ class PinPostViewController: UIViewController {
     
     func forwardGeocode() {
         
+        spinner.startAnimating()
         guard let location = answerField.text, location != "" else {
             showErrorAlert(message: "Please enter a location to find on the map")
             return
@@ -95,15 +102,11 @@ class PinPostViewController: UIViewController {
             return
         }
         
-        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
-        request.httpMethod = "POST"
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \"\(user!.id)\", \"firstName\": \"\(user!.firstName)\", \"lastName\": \"\(user!.lastName)\",\"mapString\": \"\(self.location)\", \"mediaURL\": \"\(link)\",\"latitude\": \(Double(self.coordinate!.latitude)), \"longitude\": \(Double(self.coordinate!.longitude))}".data(using: String.Encoding.utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            if error != nil { // Handle error…
+        apiClient.postPin(httpBody: "{\"uniqueKey\": \"\(user!.id)\", \"firstName\": \"\(user!.firstName)\", \"lastName\": \"\(user!.lastName)\",\"mapString\": \"\(self.location)\", \"mediaURL\": \"\(link)\",\"latitude\": \(Double(self.coordinate!.latitude)), \"longitude\": \(Double(self.coordinate!.longitude))}") { data, response, error in
+            if error != nil { // Handle network error…
+                DispatchQueue.main.async(execute: {
+                    self.showErrorAlert(message: "Network Error")
+                })
                 return
             }
             
@@ -111,7 +114,6 @@ class PinPostViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             })
         }
-        task.resume()
     }
 
 }

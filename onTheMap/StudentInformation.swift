@@ -1,5 +1,5 @@
 //
-//  Student.swift
+//  StudentInformation.swift
 //  onTheMap
 //
 //  Created by Drew Fleeman on 6/26/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Student {
+struct StudentInformation {
     
     let firstName: String
     let lastName: String

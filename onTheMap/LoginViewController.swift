@@ -14,9 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    let apiClient = ApiClient()
     
     @IBAction func openUdacitySignUpOnSafari(_ sender: UIButton) {
         if let requestUrl = URL(string: "https://www.udacity.com/account/auth#!/signup") {
@@ -35,13 +33,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+        apiClient.authenticateUdacityCredentials(email: email, password: password) { data, response, error in
             if error != nil { // Handle network error…
                 DispatchQueue.main.async(execute: {
                     self.showErrorAlert(message: "Network or URL error")
@@ -62,9 +54,9 @@ class LoginViewController: UIViewController {
             }
             
             print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
-//            DispatchQueue.main.async(execute: {
-//                self.showErrorAlert(message: NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)! as String)
-//            })
+            //            DispatchQueue.main.async(execute: {
+            //                self.showErrorAlert(message: NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)! as String)
+            //            })
             let errorMessage = (json as AnyObject)["error"]!
             if errorMessage != nil {
                 DispatchQueue.main.async(execute: {
@@ -80,15 +72,15 @@ class LoginViewController: UIViewController {
             })
             
         }
-        task.resume()
         
     }
     
     func getUser(id: String) {
-        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/users/\(id)")!)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+        apiClient.getUser(id: id) { data, response, error in
             if error != nil { // Handle error...
+                DispatchQueue.main.async(execute: {
+                    self.showErrorAlert(message: "Error getting user info")
+                })
                 return
             }
             let range = Range(5..<data!.count)
@@ -121,10 +113,8 @@ class LoginViewController: UIViewController {
                 "lastName": lastName as AnyObject,
                 ])
             
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.user = user
+            Model.shared.user = user
         }
-        task.resume()
     }
 
 }

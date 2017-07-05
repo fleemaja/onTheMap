@@ -247,19 +247,23 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Location Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wyx-Pi-K7f">
-                                        <rect key="frame" x="97" y="109.5" width="181" height="30"/>
+                                        <rect key="frame" x="97" y="79" width="181" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" verticalHuggingPriority="300" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bUn-3P-8jL">
-                                        <rect key="frame" x="13.5" y="224.5" width="348" height="212"/>
+                                        <rect key="frame" x="13.5" y="163.5" width="348" height="212"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="212" id="QVH-lO-4iF"/>
                                             <constraint firstAttribute="height" constant="212" id="ULc-4Q-MX3"/>
                                             <constraint firstAttribute="width" constant="348" id="xMp-Ju-xFj"/>
                                         </constraints>
                                     </mapView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Off-eB-cYL">
+                                        <rect key="frame" x="169" y="430.5" width="37" height="37"/>
+                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4u-hh-g6U">
                                         <rect key="frame" x="150" y="522" width="75" height="41"/>
                                         <color key="backgroundColor" red="1" green="0.38250307430000002" blue="0.029188404330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -294,6 +298,7 @@
                         <outlet property="mapView" destination="bUn-3P-8jL" id="6bS-co-ysw"/>
                         <outlet property="pinPostButton" destination="Z4u-hh-g6U" id="aXd-Ou-VgH"/>
                         <outlet property="questionLabel" destination="aFI-Ii-Q3d" id="5uw-6w-anI"/>
+                        <outlet property="spinner" destination="Off-eB-cYL" id="2GG-oh-Oy1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTh-Nm-vRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
