@@ -77,4 +77,14 @@ class ApiClient {
         task.resume()
     }
     
+    /*
+     * Return the singleton instance of Model
+     */
+    class var shared: ApiClient {
+        struct Static {
+            static let instance: ApiClient = ApiClient()
+        }
+        return Static.instance
+    }
+    
 }

@@ -17,13 +17,15 @@ class PinPostViewController: UIViewController {
     @IBOutlet weak var pinPostButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
-    let apiClient = ApiClient()
-    
     var location: String = ""
     var coordinate: CLLocationCoordinate2D? {
         didSet {
             spinner?.stopAnimating()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.mapView.frame = self.view.bounds
     }
     
     var user: UdacityUser? {
@@ -102,7 +104,7 @@ class PinPostViewController: UIViewController {
             return
         }
         
-        apiClient.postPin(httpBody: "{\"uniqueKey\": \"\(user!.id)\", \"firstName\": \"\(user!.firstName)\", \"lastName\": \"\(user!.lastName)\",\"mapString\": \"\(self.location)\", \"mediaURL\": \"\(link)\",\"latitude\": \(Double(self.coordinate!.latitude)), \"longitude\": \(Double(self.coordinate!.longitude))}") { data, response, error in
+        ApiClient.shared.postPin(httpBody: "{\"uniqueKey\": \"\(user!.id)\", \"firstName\": \"\(user!.firstName)\", \"lastName\": \"\(user!.lastName)\",\"mapString\": \"\(self.location)\", \"mediaURL\": \"\(link)\",\"latitude\": \(Double(self.coordinate!.latitude)), \"longitude\": \(Double(self.coordinate!.longitude))}") { data, response, error in
             if error != nil { // Handle network error…
                 DispatchQueue.main.async(execute: {
                     self.showErrorAlert(message: "Network Error")

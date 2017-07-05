@@ -14,8 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    let apiClient = ApiClient()
-    
     @IBAction func openUdacitySignUpOnSafari(_ sender: UIButton) {
         if let requestUrl = URL(string: "https://www.udacity.com/account/auth#!/signup") {
             UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
@@ -33,7 +31,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        apiClient.authenticateUdacityCredentials(email: email, password: password) { data, response, error in
+        ApiClient.shared.authenticateUdacityCredentials(email: email, password: password) { data, response, error in
             if error != nil { // Handle network error…
                 DispatchQueue.main.async(execute: {
                     self.showErrorAlert(message: "Network or URL error")
@@ -41,7 +39,7 @@ class LoginViewController: UIViewController {
                 return
             }
             let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
+            let newData = data?.subdata(in: range)
             
             let json: Any!
             do {
@@ -53,10 +51,6 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
-            //            DispatchQueue.main.async(execute: {
-            //                self.showErrorAlert(message: NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)! as String)
-            //            })
             let errorMessage = (json as AnyObject)["error"]!
             if errorMessage != nil {
                 DispatchQueue.main.async(execute: {
@@ -64,6 +58,7 @@ class LoginViewController: UIViewController {
                 })
                 return
             }
+            
             // successful login
             let session = (json as AnyObject)["account"]! as AnyObject
             self.getUser(id: (session as AnyObject)["key"]! as! String)
@@ -76,7 +71,7 @@ class LoginViewController: UIViewController {
     }
     
     func getUser(id: String) {
-        apiClient.getUser(id: id) { data, response, error in
+        ApiClient.shared.getUser(id: id) { data, response, error in
             if error != nil { // Handle error...
                 DispatchQueue.main.async(execute: {
                     self.showErrorAlert(message: "Error getting user info")
@@ -84,8 +79,7 @@ class LoginViewController: UIViewController {
                 return
             }
             let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            let newData = data?.subdata(in: range)
             
             let json: Any!
             do {

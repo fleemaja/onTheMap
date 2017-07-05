@@ -10,8 +10,6 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    let apiClient = ApiClient()
-    
     var students: [StudentInformation]! {
         return Model.shared.students
     }
@@ -64,14 +62,12 @@ class TableViewController: UITableViewController {
     }
     
     @IBAction func logOut(_ sender: UIButton) {
-        apiClient.logOut() { data, response, error in
+        ApiClient.shared.logOut() { data, response, error in
             if error != nil { // Handle error…
                 self.showErrorAlert(message: "Could not log out. Network Error")
                 return
             }
-            let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            
             DispatchQueue.main.async(execute: {
                 self.dismiss(animated: true, completion: nil)
             })
@@ -79,7 +75,7 @@ class TableViewController: UITableViewController {
     }
     
     func fetchStudents() {
-        apiClient.fetchStudents() { data, response, error in
+        ApiClient.shared.fetchStudents() { data, response, error in
             if error != nil { // Handle error...
                 DispatchQueue.main.async(execute: {
                     self.showErrorAlert(message: "Failed to fetch links. Network error")
