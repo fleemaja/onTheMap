@@ -24,10 +24,6 @@ class PinPostViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.mapView.frame = self.view.bounds
-    }
-    
     var user: UdacityUser? {
         return Model.shared.user
     }
