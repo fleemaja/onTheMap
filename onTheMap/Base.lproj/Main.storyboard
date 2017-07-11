@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -238,7 +239,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IGN-vq-uIi">
-                                <rect key="frame" x="48.5" y="177" width="278" height="312"/>
+                                <rect key="frame" x="48.5" y="108" width="278" height="450"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFI-Ii-Q3d">
                                         <rect key="frame" x="0.0" y="0.0" width="278" height="24"/>
@@ -247,7 +248,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Location Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wyx-Pi-K7f">
-                                        <rect key="frame" x="48.5" y="44" width="181" height="30"/>
+                                        <rect key="frame" x="0.0" y="44" width="278" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Rqt-DN-F6s"/>
                                         </constraints>
@@ -256,18 +257,17 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" verticalHuggingPriority="300" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bUn-3P-8jL">
-                                        <rect key="frame" x="64" y="94" width="150" height="100"/>
+                                        <rect key="frame" x="0.0" y="94" width="278" height="238"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="Ns5-Tq-dxG"/>
-                                            <constraint firstAttribute="width" constant="150" id="qLF-Gx-xYD"/>
+                                            <constraint firstAttribute="width" secondItem="bUn-3P-8jL" secondAttribute="height" multiplier="139:119" id="8CY-hU-LFA"/>
                                         </constraints>
                                     </mapView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Off-eB-cYL">
-                                        <rect key="frame" x="120.5" y="214" width="37" height="37"/>
+                                        <rect key="frame" x="120.5" y="352" width="37" height="37"/>
                                         <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4u-hh-g6U">
-                                        <rect key="frame" x="101.5" y="271" width="75" height="41"/>
+                                        <rect key="frame" x="0.0" y="409" width="278" height="41"/>
                                         <color key="backgroundColor" red="1" green="0.38250307430000002" blue="0.029188404330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Search">
@@ -279,6 +279,9 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="wyx-Pi-K7f" firstAttribute="width" secondItem="aFI-Ii-Q3d" secondAttribute="width" id="7k5-dd-vGl"/>
+                                    <constraint firstItem="bUn-3P-8jL" firstAttribute="width" secondItem="wyx-Pi-K7f" secondAttribute="width" id="7vc-Fr-e2F"/>
+                                    <constraint firstItem="Z4u-hh-g6U" firstAttribute="width" secondItem="wyx-Pi-K7f" secondAttribute="width" id="A6q-xR-Pj3"/>
                                     <constraint firstItem="wyx-Pi-K7f" firstAttribute="top" secondItem="aFI-Ii-Q3d" secondAttribute="bottom" constant="20" id="Bns-Xm-Udc"/>
                                 </constraints>
                             </stackView>

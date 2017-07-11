@@ -120,7 +120,7 @@ extension MapViewController: MKMapViewDelegate {
     
     func fetchStudents() {
         ApiClient.shared.fetchStudents() { data, response, error in
-            if error != nil { // Handle error...
+            if error != nil || data == nil { // Handle error...
                 DispatchQueue.main.async(execute: {
                     self.showErrorAlert(message: "Failed to fetch links. Network error")
                 })

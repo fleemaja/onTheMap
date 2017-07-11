@@ -58,6 +58,7 @@ class PinPostViewController: UIViewController {
             
             guard error == nil else {
                 self.showErrorAlert(message: "Could not find location")
+                self.spinner?.stopAnimating()
                 return
             }
             
@@ -105,9 +106,9 @@ class PinPostViewController: UIViewController {
         }
         
         ApiClient.shared.postPin(httpBody: "{\"uniqueKey\": \"\(user!.id)\", \"firstName\": \"\(user!.firstName)\", \"lastName\": \"\(user!.lastName)\",\"mapString\": \"\(self.location)\", \"mediaURL\": \"\(link)\",\"latitude\": \(Double(self.coordinate!.latitude)), \"longitude\": \(Double(self.coordinate!.longitude))}") { data, response, error in
-            if error != nil { // Handle network error…
+            if error != nil || data == nil { // Handle network error…
                 DispatchQueue.main.async(execute: {
-                    self.showErrorAlert(message: "Network Error")
+                    self.showErrorAlert(message: "Error posting new pin")
                 })
                 return
             }

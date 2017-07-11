@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         }
         
         ApiClient.shared.authenticateUdacityCredentials(email: email, password: password) { data, response, error in
-            if error != nil { // Handle network error…
+            if error != nil || data == nil { // Handle network error…
                 DispatchQueue.main.async(execute: {
                     self.showErrorAlert(message: "Network or URL error")
                 })

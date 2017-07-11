@@ -17,7 +17,6 @@
 		3AD10F6E1F0D3C1500FBEBC9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD10F6D1F0D3C1500FBEBC9 /* Model.swift */; };
 		3AD10F701F0D588600FBEBC9 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD10F6F1F0D588600FBEBC9 /* ApiClient.swift */; };
 		3AEA9FEE1F0191DD00388270 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FED1F0191DD00388270 /* UIViewControllerExtension.swift */; };
-		3AEA9FF21F01AEFD00388270 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FF11F01AEFD00388270 /* TabViewController.swift */; };
 		3AEA9FF41F01BB9E00388270 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FF31F01BB9E00388270 /* TableViewController.swift */; };
 		3AEA9FF61F01BBE400388270 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FF51F01BBE400388270 /* MapViewController.swift */; };
 		3AEA9FF81F01BD5D00388270 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEA9FF71F01BD5D00388270 /* StudentInformation.swift */; };
@@ -36,7 +35,6 @@
 		3AD10F6D1F0D3C1500FBEBC9 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3AD10F6F1F0D588600FBEBC9 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		3AEA9FED1F0191DD00388270 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		3AEA9FF11F01AEFD00388270 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		3AEA9FF31F01BB9E00388270 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3AEA9FF51F01BBE400388270 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3AEA9FF71F01BD5D00388270 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				3AEA9FF71F01BD5D00388270 /* StudentInformation.swift */,
-				3AEA9FF11F01AEFD00388270 /* TabViewController.swift */,
 				3A989B741F01721D00E289DC /* Supporting Files */,
 				3A989B641F01720600E289DC /* LoginViewController.swift */,
 				3A9481E41F081B73001090D5 /* UdacityUser.swift */,
@@ -172,7 +169,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AD10F701F0D588600FBEBC9 /* ApiClient.swift in Sources */,
-				3AEA9FF21F01AEFD00388270 /* TabViewController.swift in Sources */,
 				3AEA9FF61F01BBE400388270 /* MapViewController.swift in Sources */,
 				3A989B651F01720600E289DC /* LoginViewController.swift in Sources */,
 				3A745C971F042A3900BA967B /* PinPostViewController.swift in Sources */,

@@ -24,10 +24,6 @@ class TableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.students.count
     }
@@ -76,7 +72,7 @@ class TableViewController: UITableViewController {
     
     func fetchStudents() {
         ApiClient.shared.fetchStudents() { data, response, error in
-            if error != nil { // Handle error...
+            if error != nil || data == nil { // Handle error...
                 DispatchQueue.main.async(execute: {
                     self.showErrorAlert(message: "Failed to fetch links. Network error")
                 })
